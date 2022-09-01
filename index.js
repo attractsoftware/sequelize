@@ -1,3 +1,4 @@
+const { user } = require("pg/lib/defaults");
 const Sequelize=require("sequelize");  
 const sequelize=new Sequelize("db1",'postgres','asdfgf',{
     host:'localhost',
@@ -50,12 +51,17 @@ const User=sequelize.define('user',{
     initialAutoIncrement: 1000,
     } );
 
-    User.drop();
+   // User.drop();
 //User.sync({force:true}).then((data)=>{
 User.sync({alter:true}).then((data)=>{
     console.log("Syancoronized successfull");
-    console.log(data);
-}).catch((err)=>{
+ const usr=   User.build({username:"cravindr",email:"cravindr@gmail.com",password:"asdfgf",age:45});
+ //console.log(usr);
+ usr.save();
+ }).then((data)=>{
+console.log(data);
+ }
+ ).catch((err)=>{
     console.log(err);
 })
 ;
