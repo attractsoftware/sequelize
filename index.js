@@ -69,3 +69,4 @@ console.log(data);
 //sequelize.drop();
 //sequelize.drop({match:/_test$/});
 console.log("Another");
+console.log("Another1");
